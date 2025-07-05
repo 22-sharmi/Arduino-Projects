@@ -1,22 +1,26 @@
-import projects from '../../data/projects.json'
-import Header from '../../components/header'
-import { notFound } from 'next/navigation'
+import projects from "../../data/projects.json";
+import Header from "../../components/header";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
-    slug: project.slug
-  }))
+    slug: project.slug,
+  }));
 }
 
 export default function ProjectPage({ params }) {
-  const project = projects.find(p => p.slug === params.slug)
+  const project = projects.find((p) => p.slug === params.slug);
 
-  if (!project) return notFound()
+  if (!project) return notFound();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white px-4 md:px-10">
       <Header />
       <main className="max-w-4xl mx-auto space-y-6 py-10">
+        <Link href="/" className="text-sm md:text-lg text-blue-500 hover:underline my-4 inline-flex items-center">
+        ← Go Back
+      </Link>
         <h1 className="text-3xl font-bold">{project.title}</h1>
         <p>{project.explanation}</p>
 
@@ -49,9 +53,13 @@ export default function ProjectPage({ params }) {
 
         <section>
           <h2 className="text-2xl font-semibold mb-2">📷 Circuit Diagram</h2>
-          <img src={project.image} alt="Circuit diagram" className="rounded shadow" />
+          <img
+            src={project.image}
+            alt="Circuit diagram"
+            className="rounded shadow"
+          />
         </section>
       </main>
     </div>
-  )
+  );
 }

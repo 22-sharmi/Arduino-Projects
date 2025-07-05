@@ -4,7 +4,6 @@ import { useState } from "react";
 import projects from "./data/projects.json";
 import ProjectCard from "./components/projectCard";
 import Header from "./components/header";
-import FeedbackForm from "./components/FeedbackForm";
 
 const allCategories = ["All", ...new Set(projects.map((p) => p.category))];
 
@@ -44,9 +43,6 @@ export default function HomePage() {
           {filtered.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
-        </div>
-        <div className="p-6">
-          <FeedbackForm />
         </div>
       </main>
     </div>

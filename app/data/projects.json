@@ -5,27 +5,57 @@
     "description": "Make an LED blink using Arduino.",
     "category": "Beginner",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 3 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 3
+      }
     ],
     "explanation": "This is the Hello World of Arduino. It blinks an LED at regular intervals.",
     "code": "int ledPin = 8; //definition digital 8 pins as pin to control the LED\nvoid setup()\n{\n    pinMode(ledPin, OUTPUT); //Set the digital 8 port mode, OUTPUT: Output mode\n}\nvoid loop()\n{\n    digitalWrite(ledPin, HIGH); //HIGH is set to about 5V PIN8\n    delay(1000); //Set the delay time, 1000 = 1S\n    digitalWrite(ledPin, LOW); //LOW is set to about 5V PIN8\n    delay(1000); //Set the delay  time, 1000 = 1S\n}",
     "image": "/images/led-circuit.png"
   },
   {
-     "slug": "traffic-light-system",
+    "slug": "traffic-light-system",
     "title": "🚦 Traffic Light System",
     "description": "Simulate a traffic light using 3 LEDs.",
     "category": "Beginner",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "Red, Yellow, Green LEDs", "quantity": 1 },
-      { "name": "220Ω Resistors", "quantity": 3 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 6 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "Red, Yellow, Green LEDs",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistors",
+        "quantity": 3
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 6
+      }
     ],
     "explanation": "Control 3 LEDs to mimic real-life traffic signals with delays.",
     "code": "int red = 9;\nint yellow = 8;\nint green = 7;\n\nvoid setup(){\n  pinMode(red, OUTPUT);\n  pinMode(yellow, OUTPUT);\n  pinMode(green, OUTPUT);\n}\n\nvoid loop(){\n  digitalWrite(red, HIGH);\n  delay(15000);\n  digitalWrite(red, LOW);\n\n  digitalWrite(yellow, HIGH);\n  delay(1000);\n  digitalWrite(yellow, LOW);\n  delay(500);\n\n  digitalWrite(green, HIGH);\n  delay(20000);\n  digitalWrite(green, LOW);\n}",

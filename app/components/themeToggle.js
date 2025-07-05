@@ -28,8 +28,7 @@ export default function ThemeToggle() {
 
   return (
     <button onClick={toggleTheme} className="text-yellow-500 dark:text-yellow-300">
-      {dark ? <p>🌞</p> : <p>🌜</p>}
-      {/* {dark ? <SunIcon className="w-6 h-6" /> : <MoonIcon className="w-6 h-6" />} */}
+      {dark ? <p className='text-xl md:text-3xl'>🌞</p> : <p className='text-xl md:text-3xl'>🌜</p>}
     </button>
   )
 }
