@@ -12,11 +12,11 @@
       { "name": "Jumper Wires", "quantity": 3 }
     ],
     "explanation": "This is the Hello World of Arduino. It blinks an LED at regular intervals.",
-    "code": "void setup() {\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(1000);\n  digitalWrite(13, LOW);\n  delay(1000);\n}",
+    "code": "int ledPin = 8; //definition digital 8 pins as pin to control the LED\nvoid setup()\n{\n    pinMode(ledPin, OUTPUT); //Set the digital 8 port mode, OUTPUT: Output mode\n}\nvoid loop()\n{\n    digitalWrite(ledPin, HIGH); //HIGH is set to about 5V PIN8\n    delay(1000); //Set the delay time, 1000 = 1S\n    digitalWrite(ledPin, LOW); //LOW is set to about 5V PIN8\n    delay(1000); //Set the delay  time, 1000 = 1S\n}",
     "image": "/images/led-circuit.png"
   },
   {
-    "slug": "traffic-light-system",
+     "slug": "traffic-light-system",
     "title": "🚦 Traffic Light System",
     "description": "Simulate a traffic light using 3 LEDs.",
     "category": "Beginner",
@@ -28,7 +28,7 @@
       { "name": "Jumper Wires", "quantity": 6 }
     ],
     "explanation": "Control 3 LEDs to mimic real-life traffic signals with delays.",
-    "code": "void setup() {\n  pinMode(2, OUTPUT);\n  pinMode(3, OUTPUT);\n  pinMode(4, OUTPUT);\n}\nvoid loop() {\n  digitalWrite(2, HIGH);\n  delay(3000);\n  digitalWrite(2, LOW);\n\n  digitalWrite(3, HIGH);\n  delay(1000);\n  digitalWrite(3, LOW);\n\n  digitalWrite(4, HIGH);\n  delay(3000);\n  digitalWrite(4, LOW);\n}",
+    "code": "int red = 9;\nint yellow = 8;\nint green = 7;\n\nvoid setup(){\n  pinMode(red, OUTPUT);\n  pinMode(yellow, OUTPUT);\n  pinMode(green, OUTPUT);\n}\n\nvoid loop(){\n  digitalWrite(red, HIGH);\n  delay(15000);\n  digitalWrite(red, LOW);\n\n  digitalWrite(yellow, HIGH);\n  delay(1000);\n  digitalWrite(yellow, LOW);\n  delay(500);\n\n  digitalWrite(green, HIGH);\n  delay(20000);\n  digitalWrite(green, LOW);\n}",
     "image": "/images/traffic-light.png"
   },
   {
@@ -37,13 +37,34 @@
     "description": "Turn on an LED with a button press.",
     "category": "Beginner",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "Push Button", "quantity": 1 },
-      { "name": "10kΩ Resistor", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 5 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "Push Button",
+        "quantity": 1
+      },
+      {
+        "name": "10kΩ Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 5
+      }
     ],
     "explanation": "Press the button to complete the circuit and light the LED.",
     "code": "void setup() {\n  pinMode(2, INPUT);\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  if(digitalRead(2) == HIGH){\n    digitalWrite(13, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n  }\n}",
@@ -55,11 +76,26 @@
     "description": "Control LED using Serial Monitor input.",
     "category": "Beginner",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 3 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 3
+      }
     ],
     "explanation": "Type commands into the Serial Monitor to toggle the LED.",
     "code": "void setup() {\n  Serial.begin(9600);\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  if (Serial.available()) {\n    char input = Serial.read();\n    if (input == '1') digitalWrite(13, HIGH);\n    else if (input == '0') digitalWrite(13, LOW);\n  }\n}",
@@ -71,12 +107,30 @@
     "description": "Detect motion using a PIR sensor.",
     "category": "Sensor Based",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "PIR Sensor", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 4 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "PIR Sensor",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 4
+      }
     ],
     "explanation": "Detect movement and light up an LED.",
     "code": "void setup() {\n  pinMode(2, INPUT);\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  if (digitalRead(2) == HIGH) {\n    digitalWrite(13, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n  }\n}",
@@ -88,12 +142,30 @@
     "description": "Detect objects using an IR sensor.",
     "category": "Sensor Based",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "IR Sensor", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 4 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "IR Sensor",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 4
+      }
     ],
     "explanation": "Turn on an LED when an obstacle is detected.",
     "code": "void setup() {\n  pinMode(2, INPUT);\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  if (digitalRead(2) == LOW) {\n    digitalWrite(13, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n  }\n}",
@@ -105,16 +177,37 @@
     "description": "Detect gas leaks using MQ sensor.",
     "category": "Sensor Based",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "MQ Gas Sensor", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "Buzzer", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 5 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "MQ Gas Sensor",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "Buzzer",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 5
+      }
     ],
     "explanation": "Alerts using LED and buzzer when gas is detected.",
-    "code": "void setup() {\n  pinMode(2, INPUT);\n  pinMode(13, OUTPUT);\n  pinMode(12, OUTPUT);\n}\nvoid loop() {\n  if (digitalRead(2) == HIGH) {\n    digitalWrite(13, HIGH);\n    digitalWrite(12, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n    digitalWrite(12, LOW);\n  }\n}",
+    "code": "int sensor = A0;\nint val = 0;\nint limit = 47;\n\nvoid setup()\n{\n  Serial.begin(9600);\n}\n\nvoid loop()\n{\n  val = analogRead(sensor);\n  val = map(val, 306, 750, 0, 100);\n  if(val > limit)\n  {\n    tone(8, 650);\n    Serial.println(\"Gas detected\");\n  }\n  delay(300);\n  noTone(8);\n}",
     "image": "/images/gas-sensor.png"
   },
   {
@@ -123,14 +216,29 @@
     "description": "Print text to a 16x2 LCD screen.",
     "category": "Output Devices",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "16x2 LCD", "quantity": 1 },
-      { "name": "Potentiometer", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 10 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "16x2 LCD",
+        "quantity": 1
+      },
+      {
+        "name": "Potentiometer",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 10
+      }
     ],
     "explanation": "Display text using LiquidCrystal library.",
-    "code": "#include <LiquidCrystal.h>\nLiquidCrystal lcd(12, 11, 5, 4, 3, 2);\nvoid setup() {\n  lcd.begin(16, 2);\n  lcd.print(\"Hello Sharmila!\");\n}\nvoid loop() {}",
+    "code": "#include <LiquidCrystal.h>\nLiquidCrystal lcd(12, 11, 5, 4, 3, 2);\nvoid setup() {\n  lcd.begin(16, 2);\n}\nvoid loop() {\n  lcd.setCursor(5, 0);\n  lcd.print(\"Hello\");\n  lcd.setCursor(1, 1);\n  lcd.print(\"** Sharmila **\");\n  delay(2000);\n  lcd.clear();\n}",
     "image": "/images/lcd.png"
   },
   {
@@ -139,10 +247,22 @@
     "description": "Measure room temperature using LM35.",
     "category": "Sensor Based",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "LM35 Sensor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 3 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "LM35 Sensor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 3
+      }
     ],
     "explanation": "Analog read from LM35 to get temperature in Celsius.",
     "code": "void setup() {\n  Serial.begin(9600);\n}\nvoid loop() {\n  int val = analogRead(A0);\n  float temp = val * 0.488;\n  Serial.println(temp);\n  delay(1000);\n}",
@@ -154,9 +274,18 @@
     "description": "Rotate a servo using Arduino.",
     "category": "Actuators",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "Servo Motor", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 3 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "Servo Motor",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 3
+      }
     ],
     "explanation": "Use Servo library to rotate motor at angles.",
     "code": "#include <Servo.h>\nServo myServo;\nvoid setup() {\n  myServo.attach(9);\n}\nvoid loop() {\n  myServo.write(0);\n  delay(1000);\n  myServo.write(90);\n  delay(1000);\n  myServo.write(180);\n  delay(1000);\n}",
@@ -168,32 +297,73 @@
     "description": "Control DC motor with Arduino & transistor.",
     "category": "Actuators",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "DC Motor", "quantity": 1 },
-      { "name": "NPN Transistor", "quantity": 1 },
-      { "name": "Diode", "quantity": 1 },
-      { "name": "External Power", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 6 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "DC Motor",
+        "quantity": 1
+      },
+      {
+        "name": "NPN Transistor",
+        "quantity": 1
+      },
+      {
+        "name": "Diode",
+        "quantity": 1
+      },
+      {
+        "name": "External Power",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 6
+      }
     ],
     "explanation": "Use transistor as switch to run motor.",
     "code": "void setup() {\n  pinMode(9, OUTPUT);\n}\nvoid loop() {\n  digitalWrite(9, HIGH);\n  delay(2000);\n  digitalWrite(9, LOW);\n  delay(2000);\n}",
     "image": "/images/dc-motor.png"
-  }
-,
+  },
   {
     "slug": "ldr-auto-light",
     "title": "🌗 Auto Light with LDR",
     "description": "Automatically turn on light at night using LDR sensor.",
     "category": "Beginner",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "LDR Sensor", "quantity": 1 },
-      { "name": "10kΩ Resistor", "quantity": 1 },
-      { "name": "LED", "quantity": 1 },
-      { "name": "220Ω Resistor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 5 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "LDR Sensor",
+        "quantity": 1
+      },
+      {
+        "name": "10kΩ Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "LED",
+        "quantity": 1
+      },
+      {
+        "name": "220Ω Resistor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 5
+      }
     ],
     "explanation": "This project uses an LDR to detect light levels and turns on an LED in the dark.",
     "code": "int ldr = A0;\nint led = 13;\nvoid setup() {\n  pinMode(led, OUTPUT);\n  Serial.begin(9600);\n}\nvoid loop() {\n  int val = analogRead(ldr);\n  Serial.println(val);\n  if(val < 500){\n    digitalWrite(led, HIGH);\n  } else {\n    digitalWrite(led, LOW);\n  }\n  delay(500);\n}",
@@ -205,12 +375,30 @@
     "description": "Unlock door using keypad and servo motor.",
     "category": "Intermediate",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "4x4 Keypad", "quantity": 1 },
-      { "name": "Servo Motor", "quantity": 1 },
-      { "name": "Buzzer", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 8 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "4x4 Keypad",
+        "quantity": 1
+      },
+      {
+        "name": "Servo Motor",
+        "quantity": 1
+      },
+      {
+        "name": "Buzzer",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 8
+      }
     ],
     "explanation": "Enter a 4-digit password on keypad. If correct, servo unlocks and buzzer beeps.",
     "code": "#include <Keypad.h>\n#include <Servo.h>\nServo servo;\nchar* password = \"1234\";\nchar entered[5];\nint pos = 0;\nconst byte rows = 4;\nconst byte cols = 4;\nchar keys[rows][cols] = {\n  {'1','2','3','A'},\n  {'4','5','6','B'},\n  {'7','8','9','C'},\n  {'*','0','#','D'}\n};\nbyte rowPins[rows] = {9, 8, 7, 6};\nbyte colPins[cols] = {5, 4, 3, 2};\nKeypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols);\nvoid setup(){\n  servo.attach(10);\n  servo.write(0);\n  Serial.begin(9600);\n}\nvoid loop(){\n  char key = keypad.getKey();\n  if(key){\n    entered[pos] = key;\n    pos++;\n    if(pos == 4){\n      entered[4] = '\\0';\n      if(strcmp(entered, password) == 0){\n        servo.write(90);\n        delay(2000);\n        servo.write(0);\n      }\n      pos = 0;\n    }\n  }\n}",
@@ -222,11 +410,26 @@
     "description": "Open dustbin lid using ultrasonic sensor when someone approaches.",
     "category": "Intermediate",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "Ultrasonic Sensor", "quantity": 1 },
-      { "name": "Servo Motor", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 5 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "Ultrasonic Sensor",
+        "quantity": 1
+      },
+      {
+        "name": "Servo Motor",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 5
+      }
     ],
     "explanation": "Detect hand movement and open the dustbin using servo.",
     "code": "#include <Servo.h>\nServo lid;\nint trig = 9, echo = 10;\nvoid setup(){\n  lid.attach(6);\n  pinMode(trig, OUTPUT);\n  pinMode(echo, INPUT);\n  Serial.begin(9600);\n}\nvoid loop(){\n  digitalWrite(trig, LOW);\n  delayMicroseconds(2);\n  digitalWrite(trig, HIGH);\n  delayMicroseconds(10);\n  digitalWrite(trig, LOW);\n  long t = pulseIn(echo, HIGH);\n  long cm = t / 29 / 2;\n  Serial.println(cm);\n  if(cm < 15){\n    lid.write(90);\n    delay(3000);\n    lid.write(0);\n  }\n  delay(500);\n}",
@@ -238,12 +441,30 @@
     "description": "Control home appliances using phone and HC-05 module.",
     "category": "Advanced",
     "components": [
-      { "name": "Arduino Uno", "quantity": 1 },
-      { "name": "HC-05 Bluetooth Module", "quantity": 1 },
-      { "name": "Relay Module", "quantity": 1 },
-      { "name": "LED or Bulb", "quantity": 1 },
-      { "name": "Breadboard", "quantity": 1 },
-      { "name": "Jumper Wires", "quantity": 6 }
+      {
+        "name": "Arduino Uno",
+        "quantity": 1
+      },
+      {
+        "name": "HC-05 Bluetooth Module",
+        "quantity": 1
+      },
+      {
+        "name": "Relay Module",
+        "quantity": 1
+      },
+      {
+        "name": "LED or Bulb",
+        "quantity": 1
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 1
+      },
+      {
+        "name": "Jumper Wires",
+        "quantity": 6
+      }
     ],
     "explanation": "Send ON/OFF commands from phone to Arduino via Bluetooth to control devices.",
     "code": "char data = 0;\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  if(Serial.available()){\n    data = Serial.read();\n    if(data == '1'){ digitalWrite(13, HIGH); }\n    else if(data == '0'){ digitalWrite(13, LOW); }\n  }\n}",
