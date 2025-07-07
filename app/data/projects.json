@@ -204,7 +204,7 @@
   {
     "slug": "gas-sensor",
     "title": "🔥 Gas Sensor Alert",
-    "description": "Detect gas leaks using MQ sensor. \n\n https://www.tinkercad.com/things/d5PG1UxtTK0/editel?sharecode=vJKcbR9xbRe_jr47CIJhUFed0z_xoQjjQopBNaFmiR4 click here for tinkercad",
+    "description": "Detect gas leaks using MQ sensor.",
     "category": "Sensor Based",
     "components": [
       {
