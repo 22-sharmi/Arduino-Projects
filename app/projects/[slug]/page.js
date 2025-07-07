@@ -18,11 +18,30 @@ export default function ProjectPage({ params }) {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white px-4 md:px-10">
       <Header />
       <main className="max-w-4xl mx-auto space-y-6 py-10">
-        <Link href="/" className="text-sm md:text-lg text-blue-500 hover:underline my-4 inline-flex items-center">
-        ← Go Back
-      </Link>
+        <Link
+          href="/"
+          className="text-sm md:text-lg text-blue-500 hover:underline my-4 inline-flex items-center"
+        >
+          ← Go Back
+        </Link>
         <h1 className="text-3xl font-bold">{project.title}</h1>
         <p>{project.explanation}</p>
+
+        {project.tinkercad && (
+          <section>
+            <h2 className="text-2xl font-semibold mb-2">
+              🔗 Tinkercad Simulation
+            </h2>
+            <a
+              href={project.tinkercad}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-blue-600"
+            >
+              Click here to view on Tinkercad
+            </a>
+          </section>
+        )}
 
         <section>
           <h2 className="text-2xl font-semibold mb-2">🔧 Components</h2>

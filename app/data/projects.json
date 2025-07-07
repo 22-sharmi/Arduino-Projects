@@ -204,7 +204,7 @@
   {
     "slug": "gas-sensor",
     "title": "🔥 Gas Sensor Alert",
-    "description": "Detect gas leaks using MQ sensor.",
+    "description": "Detect gas leaks using MQ sensor. \n\n https://www.tinkercad.com/things/d5PG1UxtTK0/editel?sharecode=vJKcbR9xbRe_jr47CIJhUFed0z_xoQjjQopBNaFmiR4 click here for tinkercad",
     "category": "Sensor Based",
     "components": [
       {
@@ -216,28 +216,21 @@
         "quantity": 1
       },
       {
-        "name": "LED",
-        "quantity": 1
-      },
-      {
         "name": "Buzzer",
         "quantity": 1
       },
       {
-        "name": "220Ω Resistor",
+        "name": "Resistor",
         "quantity": 1
       },
       {
         "name": "Breadboard",
         "quantity": 1
-      },
-      {
-        "name": "Jumper Wires",
-        "quantity": 5
       }
     ],
     "explanation": "Alerts using LED and buzzer when gas is detected.",
-    "code": "int sensor = A0;\nint val = 0;\nint limit = 47;\n\nvoid setup()\n{\n  Serial.begin(9600);\n}\n\nvoid loop()\n{\n  val = analogRead(sensor);\n  val = map(val, 306, 750, 0, 100);\n  if(val > limit)\n  {\n    tone(8, 650);\n    Serial.println(\"Gas detected\");\n  }\n  delay(300);\n  noTone(8);\n}",
+    "tinkercad": "https://www.tinkercad.com/things/d5PG1UxtTK0/editel?sharecode=vJKcbR9xbRe_jr47CIJhUFed0z_xoQjjQopBNaFmiR4",
+    "code": "int sensor = A0;     // Connect gas sensor output to analog pin A0\nint val = 0;         // Variable to store the gas sensor reading\nint limit = 47;      // Threshold value after mapping; if gas exceeds this value, the buzzer will sound\n\nvoid setup() {\n  Serial.begin(9600);  // Initialize the Serial Monitor at 9600 baud to print messages like \"Gas detected\"\n}\n\nvoid loop() {\n  val = analogRead(sensor);  // Get a value between 0–1023 depending on the gas concentration\n  val = map(val, 306, 750, 0, 100);  // Convert that value into a 0–100 range (calibrated for your specific sensor)\n                                   // Example: 306 → 0% gas, 750 → 100% gas\n\n  if(val > limit) {\n    tone(8, 650);                  // Play a sound at 650Hz on pin 8 (buzzer)\n    Serial.println(\"Gas detected\"); // Print a warning\n    Serial.print(\"Gas Level: \"); \n    Serial.println(val); \n  }\n\n  delay(300);     // Wait for 300 milliseconds\n  noTone(8);      // Turn off the buzzer\n}",
     "image": "/images/gas-sensor.png"
   },
   {
